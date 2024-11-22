@@ -7,19 +7,19 @@ const CardCarousel = () => {
   const cards = [
     {
       title: 'ONE WAY CLOTHING',
-      imageSrc: '/images/hero-card.jpeg',
+      imageSrc: '/images/ONEWAY.PNG',
       description:
         'One Way Clothing utiliza HTML y CSS en Visual Studio Code, ofreciendo una interfaz atractiva. Incluye un chatbot de SnatchBot para atención al cliente eficiente y utiliza iconos de Font Awesome para una experiencia visual moderna.',
     },
     {
       title: 'CODEVERSE',
-      imageSrc: '/images/hero-card.jpeg',
+      imageSrc: '/images/Codeverse.png',
       description:
         'Codeverse es una plataforma de cursos en línea creada con Java, enfocada en ofrecer un entorno intuitivo para la compra y gestión de cursos. Utiliza tecnologías backend robustas para garantizar una experiencia fluida y segura para los usuarios.',
     },
     {
       title: 'YOGA STUDIO',
-      imageSrc: '/images/hero-card.jpeg',
+      imageSrc: '/images/YOGASTUDIO.PNG',
       description:
         'Yoga Studio es una página web diseñada con HTML y CSS puro, que ofrece una experiencia visualmente atractiva y fluida. Utiliza transiciones y animaciones para crear una interfaz interactiva y relajante, perfecta para promover clases y eventos de yoga, sin depender de frameworks adicionales.',
     },
@@ -27,35 +27,36 @@ const CardCarousel = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % cards.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []); 
+  }, []);
 
   return (
     <section className="w-screen h-screen bg-custom-dark bg-opacity-95 flex flex-col items-center justify-center px-5 md:px-10 lg:px-20">
       <div className="relative w-full max-w-4xl flex flex-col items-center text-center">
-        <div className="w-full max-w-xs mb-4">
-          <h4 className="font-bold text-xl text-custom-rojo mb-4">
+        <div className="w-full max-w-xs mb-2"> {/* Reducido el espacio */}
+          <h4 className="font-bold text-xl text-custom-rojo dark:text-custom-parrafos mb-2"> {/* Reducido el margen */}
             {cards[currentIndex].title}
           </h4>
-          <div className="relative w-full h-80 mb-4">
+          <div className="relative w-full h-64 mb-2 flex items-center justify-center"> {/* Reducido el tamaño de la imagen */}
             <Image
               alt="Card background"
               className="object-cover rounded-xl mx-auto"
               src={cards[currentIndex].imageSrc}
-              width={400}
-              height={400}
+              width={350}
+              height={350} // Ajustado tamaño de la imagen
             />
           </div>
-          <p className="text-custom-parrafos mt-4">{cards[currentIndex].description}</p>
+          <p className="text-custom-parrafos dark:text-gray-500 mt-2"> {/* Ajustado espacio inferior */}
+            {cards[currentIndex].description}
+          </p>
         </div>
 
-        <div className="text-center mt-8">
+        <div className="text-center mt-4"> {/* Reducido margen */}
           <div className="flex justify-center space-x-2">
             {cards.map((_, index) => (
               <div
